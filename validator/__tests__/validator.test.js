@@ -1,6 +1,6 @@
 "use strict";
 
-const faker = require("faker");
+//const faker = require("faker");
 const validator = require("../validator.js");
 
 let str = "yes";
@@ -17,6 +17,9 @@ const schema = {
     age: { type: "number" },
     children: { type: "array", valueType: "string" }
   }
+ 
+
+
 };
 
 describe("Validator module performs basic validation of", () => {
@@ -98,13 +101,13 @@ describe("Validator module evaluates a basic schema", () => {
     for (var field in schema.fields) {
       switch (schema.fields[field].type) {
         case "boolean":
-          testRecord[field] = faker.random.boolean();
+          testRecord[field] = validator.random.boolean();
           break;
         case "number":
-          testRecord[field] = faker.random.number();
+          testRecord[field] = validator.random.number();
           break;
         case "string":
-          testRecord[field] = faker.random.word();
+          testRecord[field] = validator.random.word();
           break;
         case "array":
           testRecord[field] = [];
@@ -125,13 +128,13 @@ describe("Validator module evaluates a basic schema", () => {
     for (var field in schema.fields) {
       switch (schema.fields[field].type) {
         case "boolean":
-          testRecord[field] = faker.random.number();
+          testRecord[field] = validator.random.number();
           break;
         case "number":
-          testRecord[field] = faker.random.word();
+          testRecord[field] = validator.random.word();
           break;
         case "string":
-          testRecord[field] = faker.random.number();
+          testRecord[field] = validator.random.number();
           break;
         default:
           null;

@@ -31,5 +31,5 @@ class Motorcycle extends Vehicle {
   }
 }
 
-module.exports = {Car};
-module.exports = Motorcycle;
+module.exports = {Car, Motorcycle};
+//module.exports = Motorcycle;

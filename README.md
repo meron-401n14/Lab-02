@@ -4,9 +4,7 @@
 ### Author: Meron
 
 ### Links and Resources
-* [submission PR](http://xyz.com)
-* [travis](http://xyz.com)
-
+* [submission PR](https://github.com/meron-401n14/Lab-02/pull/1)
 
 #### Documentation
 
