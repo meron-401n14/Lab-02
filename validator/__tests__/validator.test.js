@@ -1,6 +1,6 @@
 "use strict";
 
-//const faker = require("faker");
+const faker = require("faker");
 const validator = require("../validator.js");
 
 let str = "yes";
@@ -17,13 +17,10 @@ const schema = {
     age: { type: "number" },
     children: { type: "array", valueType: "string" }
   }
- 
-
-
 };
 
-describe("Validator module performs basic validation of", () => {
-  it("strings", () => {
+describe('Validator module performs basic validation of', () => {
+  it('strings', () => {
     expect(validator.isString(str)).toBeTruthy();
     expect(validator.isString(num)).toBeFalsy();
     expect(validator.isString(arr)).toBeFalsy();
@@ -32,7 +29,7 @@ describe("Validator module performs basic validation of", () => {
     expect(validator.isString(bool)).toBeFalsy();
   });
 
-  it("numbers", () => {
+  it('numbers', () => {
     expect(validator.isNumber(str)).toBeFalsy();
     expect(validator.isNumber(num)).toBeTruthy();
     expect(validator.isNumber(arr)).toBeFalsy();
@@ -41,7 +38,7 @@ describe("Validator module performs basic validation of", () => {
     expect(validator.isNumber(bool)).toBeFalsy();
   });
 
-  it("arrays", () => {
+  it('arrays', () => {
     expect(validator.isArray(str)).toBeFalsy();
     expect(validator.isArray(num)).toBeFalsy();
     expect(validator.isArray(arr)).toBeTruthy();
@@ -50,9 +47,9 @@ describe("Validator module performs basic validation of", () => {
     expect(validator.isArray(bool)).toBeFalsy();
   });
 
-  it("arrays of type", () => {
+  it('arrays of type', () => {
     let numArray = [1, 2, 3];
-    let strArray = ["a", "b", "c"];
+    let strArray = ['a', 'b', 'c'];
 
     expect(validator.isArray(str)).toBeFalsy();
     expect(validator.isArray(num)).toBeFalsy();
@@ -100,22 +97,22 @@ describe("Validator module evaluates a basic schema", () => {
     var testRecord = {};
     for (var field in schema.fields) {
       switch (schema.fields[field].type) {
-        case "boolean":
-          testRecord[field] = validator.random.boolean();
-          break;
-        case "number":
-          testRecord[field] = validator.random.number();
-          break;
-        case "string":
-          testRecord[field] = validator.random.word();
-          break;
-        case "array":
-          testRecord[field] = [];
-          testRecord[field].push(faker.random.arrayElement());
-          testRecord[field].push(faker.random.arrayElement());
-          break;
-        default:
-          null;
+      case "boolean":
+        testRecord[field] = faker.random.boolean();
+        break;
+      case "number":
+        testRecord[field] = faker.random.number();
+        break;
+      case "string":
+        testRecord[field] = faker.random.word();
+        break;
+      case "array":
+        testRecord[field] = [];
+        testRecord[field].push(faker.random.arrayElement());
+        testRecord[field].push(faker.random.arrayElement());
+        break;
+      default:
+        null;
       }
     }
 
@@ -127,17 +124,17 @@ describe("Validator module evaluates a basic schema", () => {
     var testRecord = {};
     for (var field in schema.fields) {
       switch (schema.fields[field].type) {
-        case "boolean":
-          testRecord[field] = validator.random.number();
-          break;
-        case "number":
-          testRecord[field] = validator.random.word();
-          break;
-        case "string":
-          testRecord[field] = validator.random.number();
-          break;
-        default:
-          null;
+      case "boolean":
+        testRecord[field] = faker.random.number();
+        break;
+      case "number":
+        testRecord[field] = faker.random.word();
+        break;
+      case "string":
+        testRecord[field] = faker.random.number();
+        break;
+      default:
+        null;
       }
     }
     expect(validator.isValid(schema, testRecord)).toBeFalsy();

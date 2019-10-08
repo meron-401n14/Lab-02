@@ -21,6 +21,7 @@
   "homepage": "https://github.com/meron-401n14/Lab-02#readme",
   "dependencies": {
     "eslint": "^6.5.1",
+    "faker": "^4.1.0",
     "jest": "^24.9.0"
   }
 }
