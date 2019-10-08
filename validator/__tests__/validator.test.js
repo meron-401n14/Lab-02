@@ -1,22 +1,22 @@
-"use strict";
+'use strict';
 
-const faker = require("faker");
-const validator = require("../validator.js");
+const faker = require('faker');
+const validator = require('../validator.js');
 
-let str = "yes";
+let str = 'yes';
 let num = 1;
-let arr = ["a"];
-let obj = { x: "y" };
+let arr = ['a'];
+let obj = { x: 'y' };
 let func = () => {};
 let bool = false;
 
 const schema = {
   fields: {
-    id: { type: "string", required: true },
-    name: { type: "string", required: true },
-    age: { type: "number" },
-    children: { type: "array", valueType: "string" }
-  }
+    id: { type: 'string', required: true },
+    name: { type: 'string', required: true },
+    age: { type: 'number' },
+    children: { type: 'array', valueType: 'string' },
+  },
 };
 
 describe('Validator module performs basic validation of', () => {
@@ -57,13 +57,13 @@ describe('Validator module performs basic validation of', () => {
     expect(validator.isArray(func)).toBeFalsy();
     expect(validator.isArray(bool)).toBeFalsy();
     expect(validator.isArray(arr)).toBeTruthy();
-    expect(validator.isArray(numArray, "number")).toBeTruthy();
-    expect(validator.isArray(numArray, "string")).toBeFalsy();
-    expect(validator.isArray(strArray, "string")).toBeTruthy();
-    expect(validator.isArray(strArray, "number")).toBeFalsy();
+    expect(validator.isArray(numArray, 'number')).toBeTruthy();
+    expect(validator.isArray(numArray, 'string')).toBeFalsy();
+    expect(validator.isArray(strArray, 'string')).toBeTruthy();
+    expect(validator.isArray(strArray, 'number')).toBeFalsy();
   });
 
-  it("objects", () => {
+  it('objects', () => {
     expect(validator.isObject(str)).toBeFalsy();
     expect(validator.isObject(num)).toBeFalsy();
     expect(validator.isObject(arr)).toBeFalsy();
@@ -72,7 +72,7 @@ describe('Validator module performs basic validation of', () => {
     expect(validator.isObject(bool)).toBeFalsy();
   });
 
-  it("booleans", () => {
+  it('booleans', () => {
     expect(validator.isBoolean(str)).toBeFalsy();
     expect(validator.isBoolean(num)).toBeFalsy();
     expect(validator.isBoolean(arr)).toBeFalsy();
@@ -81,7 +81,7 @@ describe('Validator module performs basic validation of', () => {
     expect(validator.isBoolean(bool)).toBeTruthy();
   });
 
-  it("functions", () => {
+  it('functions', () => {
     expect(validator.isFunction(str)).toBeFalsy();
     expect(validator.isFunction(num)).toBeFalsy();
     expect(validator.isFunction(arr)).toBeFalsy();
@@ -91,22 +91,22 @@ describe('Validator module performs basic validation of', () => {
   });
 });
 
-describe("Validator module evaluates a basic schema", () => {
-  it("isValid() validates a good record", () => {
+describe('Validator module evaluates a basic schema', () => {
+  it('isValid() validates a good record', () => {
     // Go through the schema and fill in perfect values for every field
     var testRecord = {};
     for (var field in schema.fields) {
       switch (schema.fields[field].type) {
-      case "boolean":
+      case 'boolean':
         testRecord[field] = faker.random.boolean();
         break;
-      case "number":
+      case 'number':
         testRecord[field] = faker.random.number();
         break;
-      case "string":
+      case 'string':
         testRecord[field] = faker.random.word();
         break;
-      case "array":
+      case 'array':
         testRecord[field] = [];
         testRecord[field].push(faker.random.arrayElement());
         testRecord[field].push(faker.random.arrayElement());
@@ -119,18 +119,18 @@ describe("Validator module evaluates a basic schema", () => {
     expect(validator.isValid(schema, testRecord)).toBeTruthy();
   });
 
-  it("isValid() returns undefined on type mismatch", () => {
+  it('isValid() returns undefined on type mismatch', () => {
     // Go through the schema and fill in incorrect values for every field
     var testRecord = {};
     for (var field in schema.fields) {
       switch (schema.fields[field].type) {
-      case "boolean":
+      case 'boolean':
         testRecord[field] = faker.random.number();
         break;
-      case "number":
+      case 'number':
         testRecord[field] = faker.random.word();
         break;
-      case "string":
+      case 'string':
         testRecord[field] = faker.random.number();
         break;
       default:
@@ -140,7 +140,7 @@ describe("Validator module evaluates a basic schema", () => {
     expect(validator.isValid(schema, testRecord)).toBeFalsy();
   });
 
-  it("isValid() returns undefined with missing requirements", () => {
+  it('isValid() returns undefined with missing requirements', () => {
     // Go through the schema and fill in perfect values for every field
     var testRecord = {};
     for (var field in schema.fields) {
