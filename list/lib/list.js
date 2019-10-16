@@ -5,8 +5,9 @@ class List {
     this.length = 0;
     this.data = {};
   }
-  /**reindex(): sort and reduce in the form of key value
- * object  and return re indexed data . */
+  /** sort and reduce in the form of key value object
+   * return re indexed data.
+   * */
   reindex() {
     let data = Object.keys(this.data).sort().reduce((acc,val,idx) => {
       acc[idx] = this.data[val];
@@ -16,14 +17,17 @@ class List {
     this.length = Object.keys(data).length;
     this.data = data;
   }
-  /** push(): @param item and check the * criteria item will be pushed to the end of the data*/
+  /** add data at the end
+   * @param item
+   * return length*/
   push(item) {
     if ( arguments.length === 1 ) {
       this.data[this.length++] = item;
     }
     return this.length;
   }
-  /**pop() : check  criteria return undefined/ remove last index  */
+  /**check criteria
+   * return undefined or item  */
   pop() {
     if ( ! this.length ) { return undefined; }
     let item = this.data[this.length - 1];
@@ -31,7 +35,10 @@ class List {
     this.length--;
     return item;
   }
-  /** checks  index ‘0 ‘t  return undefined / unshift assign item to index ‘0’ and return item */
+  /** if not first item ,return undefined
+   *  declare variable item
+   * delete first item re index and return item
+   */
   shift() {
     if ( ! this.data[0] ) { return undefined; }
     let item = this.data[0];
@@ -39,13 +46,22 @@ class List {
     this.reindex();
     return item;
   }
-  /** assign the item at the end re index() and return the data length  */
+  /**
+   *  @param = item
+   * add item in the front
+   * return length
+   */
   unshift(item) {
     this.data[-1] = item;
     this.reindex();
     return this.length;
   }
-  /** @param callback */
+
+  /**
+   * @param callback
+   * loop through each object
+   * call function with value index
+   */
   forEach(callback) {
     if ( this.length ) {
       for (let i = 0; i <= this.length - 1; i++) {
@@ -53,7 +69,9 @@ class List {
       }
     }
   }
-  /** @param callback push data to result  */
+  /**
+   * @param callback
+   * push data to result  */
   map(callback) {
     if ( ! this.length ) { return undefined; }
     let result = new List();
@@ -62,7 +80,13 @@ class List {
     }
     return result;
   }
-
+  /**
+ *  @param {*} callback
+ * check object length if null return undefined
+ * then create new object
+ * if there is data push to new list
+ * return result
+ */
   filter(callback) {
     if ( ! this.length ) { return undefined; }
     let result = new List();
@@ -73,7 +97,11 @@ class List {
     }
     return result;
   }
-
+  /**
+ *  @param {*} callback 
+ * @param {*} state 
+ * return data state
+ */
   reduce(callback, state) {
     if ( ! this.length ) { return undefined; }
     for (let i = 0; i <= this.length - 1; i++) {
