@@ -9,20 +9,23 @@
 
 #### Documentation
 
-* [jsdoc](http://xyz.com) (Server assignments)
+* [jsdoc] (only comments for list.js)
 
 
 ### Modules
-#### `vehicle-constructor.js`
-#### `vehicle-class.js`
-#### `vehicle-test.js`
-#### `list.js`
-#### `list.test.js`
-#### `validator.js`
-#### `validator.test.js`
+#### faker.js
+#### vehicle-constructor.js
+#### vehicle-class.js
+#### vehicle-test.js
+#### list.js
+#### list.test.js
+#### validator.js
+#### validator.test.js
+#### validator.js
 ##### Exported Values and Methods
+###### Car Motercycle
 
-##### Car, Motorcycle, validator and List
+
 
 ### Setup
 
