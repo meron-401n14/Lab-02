@@ -73,7 +73,7 @@ describe('List', () => {
   it('forEach() does not run if there is nothing in the list', () => {
     let myList = new List();
     let iterations = 0;
-    myList.forEach( item => {
+    myList.forEach( () => {
       iterations++;
     });
     expect(iterations).toEqual(0);
@@ -82,7 +82,7 @@ describe('List', () => {
   it('forEach() runs a callback for each item in the list', () => {
     let myList = loadList();
     let iterations = 0;
-    myList.forEach( item => {
+    myList.forEach( () => {
       iterations++;
     });
     expect(iterations).toEqual(myList.length);
@@ -129,7 +129,7 @@ describe('List', () => {
 
   it('reduce() reduces the list with a callback', () => {
     let myList = loadList();
-    let newList = myList.reduce( (state,val,idx) => {
+    let newList = myList.reduce( (state,val) => {
       state.push(val);
       return state;
     },[]);

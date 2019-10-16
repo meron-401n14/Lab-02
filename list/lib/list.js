@@ -5,7 +5,7 @@ class List {
     this.length = 0;
     this.data = {};
   }
-/**reindex(): sort and reduce in the form of key value 
+  /**reindex(): sort and reduce in the form of key value
  * object  and return re indexed data . */
   reindex() {
     let data = Object.keys(this.data).sort().reduce((acc,val,idx) => {
@@ -16,14 +16,14 @@ class List {
     this.length = Object.keys(data).length;
     this.data = data;
   }
-/** push(): @param item and check the * criteria item will be pushed to the end of the data*/
+  /** push(): @param item and check the * criteria item will be pushed to the end of the data*/
   push(item) {
     if ( arguments.length === 1 ) {
       this.data[this.length++] = item;
     }
     return this.length;
   }
-/**pop() : check  criteria return undefined/ remove last index  */
+  /**pop() : check  criteria return undefined/ remove last index  */
   pop() {
     if ( ! this.length ) { return undefined; }
     let item = this.data[this.length - 1];
@@ -31,7 +31,7 @@ class List {
     this.length--;
     return item;
   }
-/** checks  index ‘0 ‘t  return undefined / unshift assign item to index ‘0’ and return item */
+  /** checks  index ‘0 ‘t  return undefined / unshift assign item to index ‘0’ and return item */
   shift() {
     if ( ! this.data[0] ) { return undefined; }
     let item = this.data[0];
@@ -39,13 +39,13 @@ class List {
     this.reindex();
     return item;
   }
-/** assign the item at the end re index() and return the data length  */
+  /** assign the item at the end re index() and return the data length  */
   unshift(item) {
     this.data[-1] = item;
     this.reindex();
     return this.length;
   }
-/** @param callback */
+  /** @param callback */
   forEach(callback) {
     if ( this.length ) {
       for (let i = 0; i <= this.length - 1; i++) {
@@ -53,7 +53,7 @@ class List {
       }
     }
   }
-/** @param callback push data to result  */
+  /** @param callback push data to result  */
   map(callback) {
     if ( ! this.length ) { return undefined; }
     let result = new List();
