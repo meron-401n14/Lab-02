@@ -1,4 +1,10 @@
 'use strict';
+/**
+ * A class to represent vehicles.
+ * @constructor
+ * @name the vehicles type name
+ * @wheels the vehicles wheel number
+ */
 
 class Vehicle {
   constructor(name, wheels) {

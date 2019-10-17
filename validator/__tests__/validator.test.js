@@ -1,8 +1,8 @@
 'use strict';
 
 const faker = require('faker');
-const validator = require('../validator.js');
-
+const Validator = require('../validator-class.js');
+const valid = new Validator();
 let str = 'yes';
 let num = 1;
 let arr = ['a'];
@@ -21,73 +21,73 @@ const schema = {
 
 describe('Validator module performs basic validation of', () => {
   it('strings', () => {
-    expect(validator.isString(str)).toBeTruthy();
-    expect(validator.isString(num)).toBeFalsy();
-    expect(validator.isString(arr)).toBeFalsy();
-    expect(validator.isString(obj)).toBeFalsy();
-    expect(validator.isString(func)).toBeFalsy();
-    expect(validator.isString(bool)).toBeFalsy();
+    expect(valid.isString(str)).toBeTruthy();
+    expect(valid.isString(num)).toBeFalsy();
+    expect(valid.isString(arr)).toBeFalsy();
+    expect(valid.isString(obj)).toBeFalsy();
+    expect(valid.isString(func)).toBeFalsy();
+    expect(valid.isString(bool)).toBeFalsy();
   });
 
   it('numbers', () => {
-    expect(validator.isNumber(str)).toBeFalsy();
-    expect(validator.isNumber(num)).toBeTruthy();
-    expect(validator.isNumber(arr)).toBeFalsy();
-    expect(validator.isNumber(obj)).toBeFalsy();
-    expect(validator.isNumber(func)).toBeFalsy();
-    expect(validator.isNumber(bool)).toBeFalsy();
+    expect(valid.isNumber(str)).toBeFalsy();
+    expect(valid.isNumber(num)).toBeTruthy();
+    expect(valid.isNumber(arr)).toBeFalsy();
+    expect(valid.isNumber(obj)).toBeFalsy();
+    expect(valid.isNumber(func)).toBeFalsy();
+    expect(valid.isNumber(bool)).toBeFalsy();
   });
 
   it('arrays', () => {
-    expect(validator.isArray(str)).toBeFalsy();
-    expect(validator.isArray(num)).toBeFalsy();
-    expect(validator.isArray(arr)).toBeTruthy();
-    expect(validator.isArray(obj)).toBeFalsy();
-    expect(validator.isArray(func)).toBeFalsy();
-    expect(validator.isArray(bool)).toBeFalsy();
+    expect(valid.isArray(str)).toBeFalsy();
+    expect(valid.isArray(num)).toBeFalsy();
+    expect(valid.isArray(arr)).toBeTruthy();
+    expect(valid.isArray(obj)).toBeFalsy();
+    expect(valid.isArray(func)).toBeFalsy();
+    expect(valid.isArray(bool)).toBeFalsy();
   });
 
   it('arrays of type', () => {
     let numArray = [1, 2, 3];
     let strArray = ['a', 'b', 'c'];
 
-    expect(validator.isArray(str)).toBeFalsy();
-    expect(validator.isArray(num)).toBeFalsy();
-    expect(validator.isArray(obj)).toBeFalsy();
-    expect(validator.isArray(func)).toBeFalsy();
-    expect(validator.isArray(bool)).toBeFalsy();
-    expect(validator.isArray(arr)).toBeTruthy();
-    expect(validator.isArray(numArray, 'number')).toBeTruthy();
-    expect(validator.isArray(numArray, 'string')).toBeFalsy();
-    expect(validator.isArray(strArray, 'string')).toBeTruthy();
-    expect(validator.isArray(strArray, 'number')).toBeFalsy();
+    expect(valid.isArray(str)).toBeFalsy();
+    expect(valid.isArray(num)).toBeFalsy();
+    expect(valid.isArray(obj)).toBeFalsy();
+    expect(valid.isArray(func)).toBeFalsy();
+    expect(valid.isArray(bool)).toBeFalsy();
+    expect(valid.isArray(arr)).toBeTruthy();
+    expect(valid.isArray(numArray, 'number')).toBeTruthy();
+    expect(valid.isArray(numArray, 'string')).toBeFalsy();
+    expect(valid.isArray(strArray, 'string')).toBeTruthy();
+    expect(valid.isArray(strArray, 'number')).toBeFalsy();
   });
 
   it('objects', () => {
-    expect(validator.isObject(str)).toBeFalsy();
-    expect(validator.isObject(num)).toBeFalsy();
-    expect(validator.isObject(arr)).toBeFalsy();
-    expect(validator.isObject(obj)).toBeTruthy();
-    expect(validator.isObject(func)).toBeFalsy();
-    expect(validator.isObject(bool)).toBeFalsy();
+    expect(valid.isObject(str)).toBeFalsy();
+    expect(valid.isObject(num)).toBeFalsy();
+    expect(valid.isObject(arr)).toBeFalsy();
+    expect(valid.isObject(obj)).toBeTruthy();
+    expect(valid.isObject(func)).toBeFalsy();
+    expect(valid.isObject(bool)).toBeFalsy();
   });
 
   it('booleans', () => {
-    expect(validator.isBoolean(str)).toBeFalsy();
-    expect(validator.isBoolean(num)).toBeFalsy();
-    expect(validator.isBoolean(arr)).toBeFalsy();
-    expect(validator.isBoolean(obj)).toBeFalsy();
-    expect(validator.isBoolean(func)).toBeFalsy();
-    expect(validator.isBoolean(bool)).toBeTruthy();
+    expect(valid.isBoolean(str)).toBeFalsy();
+    expect(valid.isBoolean(num)).toBeFalsy();
+    expect(valid.isBoolean(arr)).toBeFalsy();
+    expect(valid.isBoolean(obj)).toBeFalsy();
+    expect(valid.isBoolean(func)).toBeFalsy();
+    expect(valid.isBoolean(bool)).toBeTruthy();
   });
 
   it('functions', () => {
-    expect(validator.isFunction(str)).toBeFalsy();
-    expect(validator.isFunction(num)).toBeFalsy();
-    expect(validator.isFunction(arr)).toBeFalsy();
-    expect(validator.isFunction(obj)).toBeFalsy();
-    expect(validator.isFunction(func)).toBeTruthy();
-    expect(validator.isFunction(bool)).toBeFalsy();
+    expect(valid.isFunction(str)).toBeFalsy();
+    expect(valid.isFunction(num)).toBeFalsy();
+    expect(valid.isFunction(arr)).toBeFalsy();
+    expect(valid.isFunction(obj)).toBeFalsy();
+    expect(valid.isFunction(func)).toBeTruthy();
+    expect(valid.isFunction(bool)).toBeFalsy();
   });
 });
 
@@ -116,7 +116,7 @@ describe('Validator module evaluates a basic schema', () => {
       }
     }
 
-    expect(validator.isValid(schema, testRecord)).toBeTruthy();
+    expect(valid.isValid(schema, testRecord)).toBeTruthy();
   });
 
   it('isValid() returns undefined on type mismatch', () => {
@@ -128,7 +128,7 @@ describe('Validator module evaluates a basic schema', () => {
         testRecord[field] = faker.random.number();
         break;
       case 'number':
-        testRecord[field] = faker.random.word();
+        testRecord[field] = faker.random.words();
         break;
       case 'string':
         testRecord[field] = faker.random.number();
@@ -137,7 +137,7 @@ describe('Validator module evaluates a basic schema', () => {
         null;
       }
     }
-    expect(validator.isValid(schema, testRecord)).toBeFalsy();
+    expect(valid.isValid(schema, testRecord)).toBeFalsy();
   });
 
   it('isValid() returns undefined with missing requirements', () => {
@@ -148,6 +148,6 @@ describe('Validator module evaluates a basic schema', () => {
         testRecord[field] = null;
       }
     }
-    expect(validator.isValid(schema, testRecord)).toBeFalsy();
+    expect(valid.isValid(schema, testRecord)).toBeFalsy();
   });
 });

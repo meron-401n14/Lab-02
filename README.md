@@ -9,25 +9,22 @@
 
 #### Documentation
 
-* [jsdoc] (only comments for list.js)
+* [jsdoc] for validator-class.js, vehicle-class.js
 
 
 ### Modules
-#### faker.js
+#### faker.js // External module
 #### vehicle-constructor.js
-#### vehicle-class.js
-#### vehicle-test.js
+#### vehicle-class.js  
+#### vehicle-test.js 
 #### list.js
 #### list.test.js
-#### validator.js
+#### validator-class.js
 #### validator.test.js
 #### validator.js
 ##### Exported Values and Methods
-###### Car Motercycle
-
-
-
-### Setup
+###### Car Motercycle/ 
+###### Validator / class
 
 #### Tests
 * npm test
@@ -35,4 +32,8 @@
 
 #### UML
 ![List UML](ListUML.jpg)
+
+
+
+
 
