@@ -12,22 +12,27 @@
 * [jsdoc] for validator-class.js, vehicle-class.js
 
 
-### Modules
-#### faker.js // External module
-#### vehicle-constructor.js
-#### vehicle-class.js  
-#### vehicle-test.js 
-#### list.js
-#### list.test.js
+## Modules
+#### faker.js
+#### validator.js
 #### validator-class.js
 #### validator.test.js
-#### validator.js
-##### Exported Values and Methods
+#### vehicle-class.js
+#### vehicle-constructor.js
+#### vehicle.test.js
+#### lsit.js
+#### list.test.js
+
+### Exported Values and Methods
 ###### Car Motercycle/ 
 ###### Validator / class
 
+
+#### to run the application use node index.js
+
+
 #### Tests
-* npm test
+* run  npm test for all tests
 
 
 #### UML
