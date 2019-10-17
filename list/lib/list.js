@@ -1,13 +1,21 @@
 'use strict';
-/**  class having a constructor with property of length and data. */
+/**
+ * A class to represent List of objects.
+ * @class
+ *
+ * @constructor
+ * @property list length
+ * @property list data
+ */
 class List {
   constructor() {
     this.length = 0;
     this.data = {};
   }
-  /** sort and reduce in the form of key value object
-   * return re indexed data.
-   * */
+  /**
+   * @returns {val} sorted reduced value
+
+   */
   reindex() {
     let data = Object.keys(this.data).sort().reduce((acc,val,idx) => {
       acc[idx] = this.data[val];
@@ -19,15 +27,18 @@ class List {
   }
   /** add data at the end
    * @param item
-   * return length*/
+   * @return length of list
+   */
   push(item) {
     if ( arguments.length === 1 ) {
       this.data[this.length++] = item;
     }
     return this.length;
   }
-  /**check criteria
-   * return undefined or item  */
+  /**
+   *@return undefined if not exist
+   or item after pop
+   */
   pop() {
     if ( ! this.length ) { return undefined; }
     let item = this.data[this.length - 1];
@@ -35,9 +46,9 @@ class List {
     this.length--;
     return item;
   }
-  /** if not first item ,return undefined
-   *  declare variable item
-   * delete first item re index and return item
+  /**
+   * @return undefined if not exsist
+   * or reindexied item after shift
    */
   shift() {
     if ( ! this.data[0] ) { return undefined; }
@@ -47,9 +58,9 @@ class List {
     return item;
   }
   /**
-   *  @param = item
+   *  @param item
    * add item in the front
-   * return length
+   * @return length
    */
   unshift(item) {
     this.data[-1] = item;
@@ -82,10 +93,8 @@ class List {
   }
   /**
  *  @param {*} callback
- * check object length if null return undefined
- * then create new object
- * if there is data push to new list
- * return result
+ * @return undefined if not exist or
+ * @return new list created
  */
   filter(callback) {
     if ( ! this.length ) { return undefined; }
@@ -98,9 +107,9 @@ class List {
     return result;
   }
   /**
- *  @param {*} callback 
- * @param {*} state 
- * return data state
+ *  @param {*} callback
+ * @param {*} state
+ * @return data state
  */
   reduce(callback, state) {
     if ( ! this.length ) { return undefined; }

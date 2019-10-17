@@ -9,7 +9,7 @@
 
 #### Documentation
 
-* [jsdoc] for validator-class.js, vehicle-class.js
+* [jsdoc] for validator-class.js, vehicle-class.js & list.js
 
 
 ## Modules
